@@ -5,7 +5,7 @@
     <meta name="author" content="Gongchuo Lu">
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="happy-cosmos.css">
-    <script src="blog.js"></script>
+    <script src="blog/blog.js"></script>
     <title>Blog - Happy Cosmos</title>
   </head>
 
@@ -35,7 +35,7 @@
               <td>
                 <select name="source"
                         onchange="showRSS(this.value, num.value)">
-                  <?php require "selectblog.php"; ?>
+                  <?php require "blog/selectblog.php"; ?>
                 </select>
               </td>
             </tr>

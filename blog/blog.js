@@ -8,6 +8,6 @@ function showRSS(source, num)
             document.getElementById("rssOutput").innerHTML=xmlhttp.responseText;
         }
     }
-    xmlhttp.open("GET", "getblog.php?s=" + source + "&n=" + num, true);
+    xmlhttp.open("GET", "blog/getblog.php?s=" + source + "&n=" + num, true);
     xmlhttp.send();
 }
