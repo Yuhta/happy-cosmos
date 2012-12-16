@@ -1,0 +1,142 @@
+body
+{
+    color: DimGray;
+    font-family: Georgia, serif;
+}
+
+h1
+{
+    margin: 5px;
+}
+
+a
+{
+    text-decoration: none;
+}
+
+a:visited
+{
+    color: Blue;
+}
+
+a:hover
+{
+    color: Aqua;
+}
+
+a:active
+{
+    color: Red;
+}
+
+.sc
+{
+    font-variant:small-caps;
+}
+
+#container
+{
+    width: 800px;
+    margin: 2em auto auto;
+}
+
+#menu
+{
+    padding: 20px 0px 40px;
+    text-align: center;
+    font-weight:bold;
+}
+
+.menu-button
+{
+    width: 158px;
+    padding: 5px 0px;
+    border-radius: 5px;
+    float: left;
+    margin: 0px 1px;
+}
+
+.menu-button_activated
+{
+    width: 158px;
+    padding: 5px 0px;
+    border-radius: 5px;
+    color: White;
+    background-color: DimGray;
+    float: left;
+    margin: 0px 1px;
+}
+
+
+.menu-button a
+{
+    display: block;
+    color: DimGray;
+    background-color: LightGray;
+    border-radius: 5px;
+}
+
+.menu-button a:hover
+{
+    color: Black;
+    background-color: DarkGray;
+}
+
+.menu-button a:active
+{
+    color: White;
+    background-color: DimGray;
+}
+
+#content
+{
+    clear: both;
+    min-height: 400px;
+    text-align: justify;
+}
+
+.link tr
+{
+    border-bottom: 1px dotted Gray;
+    border-top: 1px dotted Gray;
+}
+
+#content hr
+{
+    margin-top: 0;
+    margin-bottom: 0;
+    border-top: 1px dotted Gray;
+    border-bottom: 1px dotted Gray;
+    height: 0;
+    color: White;
+    background-color: White;
+}
+
+.link
+{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.link a
+{
+    padding: 0.2em;
+    display: block;
+    color: Dimgray;
+}
+
+.link a:hover
+{
+    color: Black;
+    background-color: LightGray;
+}
+
+.link p
+{
+    margin: 0.5em 0 0;
+}
+
+#footer
+{
+    font-size: 80%;
+}
