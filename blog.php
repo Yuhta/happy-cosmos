@@ -24,7 +24,7 @@
         </div>
         <div class="menu-button_activated">Blog</div>
         <div class="menu-button">
-          <a href="contact.html">Contact</a>
+          <a href="contact.php">Contact</a>
         </div>
       </div>
       <div id="content">
