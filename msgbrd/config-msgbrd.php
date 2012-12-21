@@ -18,6 +18,11 @@ else
   exit();
 }
 
+function show_msg($msg, $color="red")
+{
+  echo "<p style='color:$color'>$msg</p>";
+}
+
 function escape_data($data)
 {
   if (function_exists('mysql_real_escape_string'))
@@ -39,11 +44,8 @@ function retrieve_messages()
 {
   global $dbc;
 
-  $query = "select `m`.`subject`, `m`.`msg_txt`, `m`.`date`, "
-    . "`m`.`prnt_id`, `m`.`msg_id`, `m`.`usr_id`, `u`.`name`, "
-    . "`u`.`usr_id` from `msgs` as `m`, `users` as `u` "
-    . "where (`m`.`usr_id` = `u`.`usr_id`) "
-    . "order by `m`.`prnt_id`, `m`.`date`;";
+  $query = "SELECT `subject`, `msg_txt`, `date`, `prnt_id`, `msg_id`, `name`"
+    . " FROM `msgs` ORDER BY `prnt_id`, `date`";
   $result = mysql_query($query) or trigger_error("An error happened");
 
   if (mysql_affected_rows() > 0)
@@ -51,6 +53,8 @@ function retrieve_messages()
     $tag_switch = FALSE;
     while ($msgs = mysql_fetch_array($result, MYSQLI_ASSOC))
     {
+      $msgs['subject'] = stripslashes($msgs['subject']);
+      $msgs['msg_txt'] = stripslashes($msgs['msg_txt']);
       if ($msgs['prnt_id'] == $msgs['msg_id'])
       {
         ($tag_switch) ? print "</div><div class='comment_box'>"
@@ -59,21 +63,22 @@ function retrieve_messages()
         echo "<h3>{$msgs['subject']}</h3>";
         echo "<p>{$msgs['msg_txt']}</p>";
         echo "<br />by: {$msgs['name']} ";
-        echo "<a href='#' class='get_comments'>Comments</a>";
-        echo "<div class='comments'><hr />";
-        echo "<form id='reply'>";
-        echo "<textarea name='msg_txt' class='msg_txt' cols=80 rows=10>";
-        echo "Enter your comment here...</textarea><br />";
+        echo "<a href='#' class='unfold'>Comments</a>";
+        echo "<div class='foldable'><hr />";
+        echo "<form>";
         echo "<input type=hidden name='prnt_id' value={$msgs['prnt_id']} />";
-        echo "Name: <input type='text' name='name' />&nbsp";
-        echo "Password: <input type='password' name='passwd' />&nbsp";
-        echo "<button type='button' id='post_reply'>";
+        echo "<input type=hidden name='subject' value='' />";
+        echo "<textarea name='msg_txt' cols=80 rows=10>";
+        echo "Enter your comment here...</textarea><br />";
+        echo "Name: <input type='text' name='name' maxlength='31' />&nbsp;";
+        echo "Password: <input type='password' name='passwd' />&nbsp;";
+        echo "<button type='button' class='post'>";
         echo "Post Comment</button></form>";
-        echo "<span class='comment_sent'></span></div>";
+        echo "<span class='sent'></span></div>";
       }
       else
       {
-        echo "<div class='comments'><hr />";
+        echo "<div class='foldable'><hr />";
         echo "{$msgs['msg_txt']}<br />";
         echo "by: {$msgs['name']}<br />";
         echo "</div>";

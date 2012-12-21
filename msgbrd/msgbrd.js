@@ -1,14 +1,13 @@
 $("document").ready(function() {
-    $('div.comments').hide();
+    $('div.foldable').hide();
 
-    $('a.get_comments').click(function() {
-        $(this).siblings('div.comments').toggle();
-        return false;
+    $('a.unfold').click(function() {
+        $(this).siblings('div.foldable').toggle();
     });
 
-    $('#post_reply').bind('click', send_info_to_server);
-    function send_info_to_server() {
-        $('span.comment_sent').load('msgbrd/send-info-to-server.php',
-                                    $('#reply').serializeArray());
-    }
+    $('button.post').click(function () {
+        $(this).parent().siblings('span.sent')
+            .load('msgbrd/send-info-to-server.php',
+                  $(this).parent('form').serializeArray());
+    });
 });

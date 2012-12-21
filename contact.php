@@ -34,7 +34,8 @@
         <p>
           <span class="sc">Please feel free</span> to contact me via
           my email
-          <a href="mailto:gongchuo.lu@gmail.com">gongchuo.lu@gmail.com</a>;
+          <a href="mailto:gongchuo.lu@gmail.com.NOSPAM">
+            gongchuo.lu@gmail.com.NOSPAM</a>;
           I will get back to you as soon as possible.
         </p>
         <p>
@@ -52,11 +53,30 @@
         </p>
         <p>
           Or, if you prefer, you can use the message board below to
-          leave me a message.
+          leave me a message.  Please notice that in order to use the
+          message board, you have to <a href="msgbrd/register.html"
+          target="_blank">register</a> first.  If you have already
+          registered and wish to modify your password or email, please
+          click <a href="msgbrd/modify.html" target="_blank">here</a>.
         </p>
         <div id="msgbrd">
           <h2>My Message Board</h2>
-          <!-- <span class="comment_sent"></span> -->
+          <a href="#" class="unfold">Post a New Subject</a>
+          <div class="foldable">
+            <form>
+              <input type="hidden" name="prnt_id" value="0" />
+              Subject: <input type="text" name="subject"
+                              maxlength="63" size="63" />
+              <br />
+              <textarea name="msg_txt"
+                        cols=80 rows=10>Enter your message here...</textarea>
+              <br />
+              Name: <input type="text" name="name" maxlength="31" />&nbsp;
+              Password: <input type="password" name="passwd" />&nbsp;
+              <button type='button' class='post'>Post Subject</button>
+            </form>
+            <span class="sent"></span>
+          </div>
           <?php retrieve_messages(); ?>
         </div>
       </div>
