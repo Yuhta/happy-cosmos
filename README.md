@@ -22,5 +22,5 @@ Message Board
 After several days' work, the message board finally begins to
 function.  I have finished main part of the message board (rendering
 and posting of the messages), and the new user registration system.
-The only thing I leave undone is the page to modify user account
-information (`msgbrd/modify.html`).
+Since the user account modification system has been finished, users
+can modify their passwords and emails now.

@@ -88,4 +88,53 @@ function retrieve_messages()
   }
 }
 
+function check_name($name)
+{
+  if (preg_match("/^\w{2,}$/", stripslashes(trim($name))))
+    $n = escape_data($name);
+  else
+  {
+    $n = FALSE;
+    show_msg("Please enter a valid user name!  User names can contain"
+             . " only letters, numbers, and underscores, and should be"
+             . " at least 2 characters long.");
+  }
+  return $n;
+}
+
+function check_email($email)
+{
+  if (preg_match("%^[A-Za-z0-9._\%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$%",
+                 stripslashes(trim($email))))
+    $e = escape_data($email);
+  else
+  {
+    $e = FALSE;
+    show_msg("Please enter a valid email address!");
+  }
+  return $e;
+}
+
+function check_passwd($passwd, $name, $confirm_passwd)
+{
+  if ($passwd == $name)
+  {
+    $p = FALSE;
+    show_msg("Your password cannot be the same as the user name!");
+  }
+  else if ($passwd != $confirm_passwd)
+  {
+    $p = FALSE;
+    show_msg("Your password does not match the confirmed password!");
+  }
+  else if (preg_match("/^.{6,}$/", stripslashes(trim($passwd))))
+    $p = escape_data($passwd);
+  else
+  {
+    $p = FALSE;
+    show_msg("Password should be at least 6 characters long.");
+  }
+  return $p;
+}
+
 ?>
